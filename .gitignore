@@ -1,5 +1,7 @@
 out
 node_modules
+sfdx-project.json
+.sfdx
 .vscode-test/
 *.vsix
 C:Devnodejsnpm-cache
