@@ -1,5 +1,4 @@
 {
-    "root": true,
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": 6,
@@ -8,6 +7,7 @@
     "plugins": [
         "@typescript-eslint"
     ],
+    "root": true,
     "rules": {
         "@typescript-eslint/class-name-casing": "warn",
         "@typescript-eslint/semi": "warn",

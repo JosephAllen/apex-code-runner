@@ -35,9 +35,18 @@
 	"engines": {
 		"vscode": "^1.44.0"
 	},
+	"keywords": [
+		"apex",
+		"debug",
+		"force",
+		"salesforce",
+		"salesforcedx",
+		"sfdx"
+	],
 	"license": "ISC",
 	"main": "./out/extension.js",
 	"name": "anonapex",
+	"publisher": "JosephAllen",
 	"repository": {
 		"type": "git",
 		"url": "https://bitbucket.org/JosephAllenRepos/vscode-anon-apex.git"
