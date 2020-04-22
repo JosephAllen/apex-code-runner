@@ -73,7 +73,7 @@
 		"salesforcedx",
 		"sfdx"
 	],
-	"license": "ISC",
+	"license": "MIT",
 	"main": "./out/extension.js",
 	"name": "anonapex",
 	"publishConfig": {
