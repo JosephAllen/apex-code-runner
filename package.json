@@ -1,7 +1,7 @@
 {
 	"activationEvents": [
 		"workspaceContains:sfdx-project.json",
-		"onCommand:anonapex.helloWorld"
+		"onCommand:apexrunner.helloWorld"
 	],
 	"author": "Joseph Allen",
 	"bugs": {
@@ -74,8 +74,8 @@
 		"sfdx"
 	],
 	"license": "MIT",
-	"main": "./out/extension.js",
-	"name": "anonapex",
+	"main": "./out/extension",
+	"name": "apexrunner",
 	"publishConfig": {
 		"access": "public"
 	},
