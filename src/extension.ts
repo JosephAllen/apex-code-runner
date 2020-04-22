@@ -1,10 +1,16 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
+import { AuthInfo, Org } from '@salesforce/core';
+import * as fs from 'fs';
+import * as path from 'path';
 import * as vscode from 'vscode';
+import { workspace } from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+
+	setAuthInfo();
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
@@ -22,6 +28,23 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(disposable);
 }
+async function setAuthInfo() {
+	const configPath = path.join(
+		workspace.workspaceFolders![0].uri.fsPath,
+		'.sfdx',
+		'sfdx-config.json'
+	);
+	const configData = JSON.parse(fs.readFileSync(configPath).toString());
+	const defaultusername = configData.defaultusername;
+	const org = await Org.create({ aliasOrUsername: defaultusername });
+	const username = org.getUsername();
+	const authInfo = await AuthInfo.create({
+		username: username
+	});
+	const accessToken = authInfo.getConnectionOptions().accessToken;
+	const instanceUrl = authInfo.getConnectionOptions().instanceUrl;
+	console.log(JSON.stringify({ accessToken: accessToken, instanceUrl: instanceUrl }, null, 2));
+}
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
