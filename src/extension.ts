@@ -1,10 +1,10 @@
+'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import { AuthInfo, Org } from '@salesforce/core';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
-import { workspace } from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -33,19 +33,22 @@ async function setAuthInfo() {
 	//process.env.MY_VARIABLE = 'ahoy';
 	//console.log(process.env);
 	const configPath = path.join(
-		workspace.workspaceFolders![0].uri.fsPath,
+		vscode.workspace.workspaceFolders![0].uri.fsPath,
 		'.sfdx',
 		'sfdx-config.json'
 	);
 	const configData = JSON.parse(fs.readFileSync(configPath).toString());
-	const defaultusername = configData.defaultusername;
-	const org = await Org.create({ aliasOrUsername: defaultusername });
+	const defaultUsername = configData.defaultusername;
+	const org = await Org.create({ aliasOrUsername: defaultUsername });
+	//org =
+	//console.log(JSON.stringify(org, null, 2));
 	const username = org.getUsername();
 	const authInfo = await AuthInfo.create({
 		username: username
 	});
-	const accessToken = authInfo.getConnectionOptions().accessToken;
-	const instanceUrl = authInfo.getConnectionOptions().instanceUrl;
+	const connectionOptions = authInfo.getConnectionOptions();
+	const accessToken = connectionOptions.accessToken;
+	const instanceUrl = connectionOptions.instanceUrl;
 	console.log(JSON.stringify({ accessToken: accessToken, instanceUrl: instanceUrl }, null, 2));
 }
 
