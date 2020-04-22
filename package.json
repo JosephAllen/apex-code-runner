@@ -4,6 +4,9 @@
 		"onCommand:anonapex.helloWorld"
 	],
 	"author": "Joseph Allen",
+	"bugs": {
+		"url": "https://someurl"
+	},
 	"categories": [
 		"Other"
 	],
@@ -13,12 +16,34 @@
 				"command": "anonapex.helloWorld",
 				"title": "Hello World"
 			}
-		]
+		],
+		"keybindings": [],
+		"languages": [
+			{
+				"aliases": [
+					"Apex"
+				],
+				"extensions": [
+					".apex",
+					".cls",
+					".trigger",
+					".tgr"
+				],
+				"id": "apex"
+			}
+		],
+		"menus": {
+			"commandPalette": [],
+			"editor/context": [],
+			"editor/title": [],
+			"explorer/context": [],
+			"view/item/context": []
+		}
 	},
-	"description": "Executes Anonymous Apex",
 	"dependencies": {
 		"@salesforce/core": "^2.3.1"
 	},
+	"description": "Executes Apex code and quickly returns a formatted User Debug",
 	"devDependencies": {
 		"@salesforce/core": "^2.3.1",
 		"@types/glob": "^7.1.1",
@@ -35,10 +60,11 @@
 		"vscode-test": "^1.3.0",
 		"xml2js": "^0.4.23"
 	},
-	"displayName": "Salesforce Anonymous Apex",
+	"displayName": "Apex Code Runner",
 	"engines": {
 		"vscode": "^1.44.0"
 	},
+	"icon": "images/logo.png",
 	"keywords": [
 		"apex",
 		"debug",
@@ -50,10 +76,10 @@
 	"license": "ISC",
 	"main": "./out/extension.js",
 	"name": "anonapex",
-	"publisher": "JosephAllen",
 	"publishConfig": {
 		"access": "public"
 	},
+	"publisher": "JosephAllen",
 	"repository": {
 		"type": "git",
 		"url": "https://bitbucket.org/JosephAllenRepos/vscode-anon-apex.git"

@@ -1,23 +1,12 @@
-# anonapex README
-
-## Inspirational Projects
-
-- [Salesforce Extensions for VS Code](https://github.com/forcedotcom/salesforcedx-vscode)
-- [ForceCode for Visual Studio Code](https://github.com/celador/ForceCode)
-- [SalesforceDX Code Companion](https://github.com/msrivastav13/DX-Code-Companion)
-
-## Running Scripts
-
-``` shell
-# Running Javascript from the Command Line
-node scripts/sfdc-exec-anon.js
-```
+# Apex Code Runner
 
 This is the README for your extension "anonapex". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
-Overview here
+- Executes Apex code
+- Returns clean `system.debug` responses
+- Returns Full Debug Log
 
 ## Requirements
 
@@ -37,6 +26,14 @@ This extension contributes the following settings:
 ## Known Issues
 
 Calling out known issues can help limit users opening duplicate issues against your extension.
+
+## Inspirational Projects
+
+Here are some of the projects that were the primary inspiration and templates for this project
+
+- [Salesforce Extensions for VS Code](https://github.com/forcedotcom/salesforcedx-vscode)
+- [ForceCode for Visual Studio Code](https://github.com/celador/ForceCode)
+- [SalesforceDX Code Companion](https://github.com/msrivastav13/DX-Code-Companion)
 
 ## Release Notes
 
