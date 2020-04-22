@@ -29,6 +29,9 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 }
 async function setAuthInfo() {
+	//TODO: Use process.env.MY_VARIABLE = 'ahoy'; to set variables
+	//process.env.MY_VARIABLE = 'ahoy';
+	//console.log(process.env);
 	const configPath = path.join(
 		workspace.workspaceFolders![0].uri.fsPath,
 		'.sfdx',
