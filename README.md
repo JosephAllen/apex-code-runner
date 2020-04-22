@@ -34,6 +34,7 @@ Here are some of the projects that were the primary inspiration and templates fo
 - [Salesforce Extensions for VS Code](https://github.com/forcedotcom/salesforcedx-vscode)
 - [ForceCode for Visual Studio Code](https://github.com/celador/ForceCode)
 - [SalesforceDX Code Companion](https://github.com/msrivastav13/DX-Code-Companion)
+- [@salesforce/core](https://github.com/forcedotcom/sfdx-core)
 
 ## Release Notes
 

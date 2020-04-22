@@ -7,5 +7,13 @@
         "out": true // set this to false to include "out" folder in search results
     },
     // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
-    "typescript.tsc.autoDetect": "off"
+    "typescript.tsc.autoDetect": "off",
+    "beautify.language": {
+        "js": {
+            "type": ["typescript", "json"],
+            "filename": [".jshintrc", ".jsbeautifyrc"]
+            // "ext": ["js", "json"]
+            // ^^ to set extensions to be beautified using the javascript beautifier
+        }
+    }
 }
