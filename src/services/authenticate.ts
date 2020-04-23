@@ -1,19 +1,13 @@
 'use strict';
-import { AuthInfo, Org } from '@salesforce/core';
-import * as fs from 'fs';
-import * as path from 'path';
+import { AuthInfo, SfdxProject } from '@salesforce/core';
 import * as vscode from 'vscode';
 export async function setAuthInfo() {
-    const configPath = path.join(vscode.workspace.workspaceFolders![0].uri.fsPath, '.sfdx', 'sfdx-config.json');
-    const configData = JSON.parse(fs.readFileSync(configPath).toString());
-    const defaultUsername = configData.defaultusername;
-    const org = await Org.create({ aliasOrUsername: defaultUsername });
-    const username = org.getUsername();
+    const project = await SfdxProject.resolve(vscode.workspace.rootPath);
+    const projectConfig = await project.resolveProjectConfig();
     const authInfo = await AuthInfo.create({
-        username: username
+        username: '' + projectConfig.defaultdevhubusername
     });
     const auth = authInfo.getConnectionOptions();
     process.env.APXR_AUTH_INFO = JSON.stringify({ accessToken: auth.accessToken, instanceUrl: auth.instanceUrl });
-    //console.log(process.env.APEX_RUNNER_AUTH_INFO);
     vscode.commands.executeCommand('setContext', 'APXRActive', true);
 }
