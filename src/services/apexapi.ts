@@ -46,7 +46,7 @@ export class ApexApi {
         };
         let builder = new xml2js.Builder();
         let requestBody = builder.buildObject(env);
-        fetch(instanceUrl + '/services/Soap/s/47.0', {
+        fetch(instanceUrl + '/services/Soap/s/' + process.env.APXR_API_VERSION, {
             method: 'post',
             body: requestBody,
             headers: {
