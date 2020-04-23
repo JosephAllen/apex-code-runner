@@ -1,11 +1,8 @@
-# Scripts
+# Additional Notes
 
-## Running Scripts
+## Publishing Extensions
 
-``` shell
-# Running Javascript from the Command Line
-node scripts/sfdc-exec-anon.js
-```
+[Publishing](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
 
 ## Inspirational Projects
 

@@ -81,7 +81,7 @@
 	"engines": {
 		"vscode": "^1.44.0"
 	},
-	"icon": "images/logo.png",
+	"icon": "images/icon.png",
 	"keywords": [
 		"apex",
 		"debug",
