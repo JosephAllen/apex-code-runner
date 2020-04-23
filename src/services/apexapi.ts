@@ -68,9 +68,11 @@ export class ApexApi {
             tagNameProcessors: [stripNS]
         };
         xml2js.parseString(xml, parseOptions, function(err, result) {
+            //TODO: Create channel for "Results" which are the full debugLog
             const message = parseEnvelope(result.Envelope);
             let channel = Channel.getInstance();
-            channel.writeLog(message);
+            channel.writeUserLog(message);
+            channel.writeDebugLog(result.Envelope.Header.DebuggingInfo.debugLog);
             channel.showLog();
         });
     }
