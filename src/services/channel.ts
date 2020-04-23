@@ -1,11 +1,11 @@
 'use strict';
 import * as vscode from 'vscode';
-export const RESULTS_CHANNEL = vscode.window.createOutputChannel('Apex Runner: Debug Log');
+export const USER_DEBUG_CHANNEL = vscode.window.createOutputChannel('Apex: User Debug');
 export class Channel {
-    private readonly resultsChannel: vscode.OutputChannel;
+    private readonly userDebugChannel: vscode.OutputChannel;
     private static instance: Channel;
     constructor(channel ? : vscode.OutputChannel) {
-        this.resultsChannel = channel || RESULTS_CHANNEL;
+        this.userDebugChannel = channel || USER_DEBUG_CHANNEL;
     }
     public static getInstance(channel ? : vscode.OutputChannel) {
         if (!Channel.instance) {
@@ -15,10 +15,10 @@ export class Channel {
     }
     public writeLog(data: string) {
         const stringData = data;
-        this.resultsChannel.clear();
-        this.resultsChannel.appendLine(stringData);
+        this.userDebugChannel.clear();
+        this.userDebugChannel.appendLine(stringData);
     }
     public showLog() {
-        this.resultsChannel.show(true);
+        this.userDebugChannel.show(true);
     }
 }

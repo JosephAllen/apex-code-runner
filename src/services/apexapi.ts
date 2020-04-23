@@ -2,6 +2,7 @@
 import fetch from 'node-fetch';
 import * as vscode from 'vscode';
 import * as xml2js from 'xml2js';
+import { parseEnvelope } from '../parsers';
 import { Channel } from './channel';
 export class ApexApi {
     private static source() {
@@ -66,21 +67,10 @@ export class ApexApi {
             tagNameProcessors: [stripNS]
         };
         xml2js.parseString(xml, parseOptions, function(err, result) {
-            let channel = Channel.getInstance();
             const env = result.Envelope;
-            if (env.Body.hasOwnProperty('Fault')) {
-                // response = env.Body.Fault;
-            }
-            else {
-                let message = '';
-                if (env.Header.DebuggingInfo.debugLog !== null) {
-                    message = env.Header.DebuggingInfo.debugLog;
-                }
-                else {
-                    message = JSON.stringify(env.Body.executeAnonymousResponse.result, null, 2);
-                }
-                channel.writeLog(message);
-            }
+            const message = parseEnvelope(env);
+            let channel = Channel.getInstance();
+            channel.writeLog(message);
             channel.showLog();
         });
     }
