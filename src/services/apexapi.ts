@@ -56,11 +56,11 @@ export async function executeAnonymous(): Promise < void > {
             'SOAPAction': '""'
         },
     }).then((res) => res.text()).then((response) => {
-        parse(response);
+        parseXml(response);
     });
 }
 
-function parse(xml: string) {
+function parseXml(xml: string) {
     const stripNS = xml2js.processors.stripPrefix;
     const parseOptions = {
         emptyTag: null,

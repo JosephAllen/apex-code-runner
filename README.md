@@ -1,6 +1,6 @@
 # Apex Code Runner
 
-This is the README for your extension "anonapex". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "Apex Code Runner". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
