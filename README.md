@@ -13,6 +13,8 @@ Apex Code Runner is a simple, fast and graceful tool for running `Apex` or `SOQL
 
 ### Clean User Debug Without the Clutter of a Full Debug Log
 
+Speeds up development by showing only what you want.
+
 ![Clean User Debug Without the Clutter of a Full Debug Log](./images/userDebug.png)
 
 ### Full Debug Log Too
@@ -59,4 +61,4 @@ This extension is currently in beta
 
 Initial release of Apex Code Runner
 
-**Enjoy!**
+__Enjoy!__
