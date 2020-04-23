@@ -14,7 +14,7 @@
 		"commands": [
 			{
 				"command": "apexrunner.executeAnonymous",
-				"title": "ApexRunner: Execute Anonymous",
+				"title": "Apex: Execute Anonymous",
 				"when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
 			}
 		],
@@ -53,15 +53,7 @@
 					"group": "ApexRunner",
 					"when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
 				}
-			],
-			"explorer/context": [
-				{
-					"command": "apexrunner.executeAnonymous",
-					"group": "ApexRunner",
-					"when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
-				}
-			],
-			"view/item/context": []
+			]
 		}
 	},
 	"dependencies": {

@@ -8,8 +8,9 @@ export class ApexApi {
     private static source() {
         const editor = vscode.window.activeTextEditor;
         if (editor) {
-            return editor.document.getText(editor.selection);
+            return editor.document.getText();
         }
+        return '';
     }
     public static async executeAnonymous(): Promise < void > {
         const authInfo = JSON.parse('' + process.env.APXR_AUTH_INFO);
