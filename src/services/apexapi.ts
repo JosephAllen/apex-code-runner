@@ -13,6 +13,7 @@ function source() {
     return '';
 }
 export async function executeAnonymous(): Promise < void > {
+    //TODO: see https://github.com/microsoft/vscode-extension-samples/tree/master/progress-sample for progress
     const authInfo = JSON.parse('' + process.env.APXR_AUTH_INFO);
     const accessToken = authInfo.accessToken;
     const instanceUrl = authInfo.instanceUrl;
@@ -57,7 +58,6 @@ export async function executeAnonymous(): Promise < void > {
     }).then((res) => res.text()).then((response) => {
         parse(response);
     });
-    //Notification.clear();
 }
 
 function parse(xml: string) {
