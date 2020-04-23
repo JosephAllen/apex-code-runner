@@ -92,7 +92,7 @@
 	],
 	"license": "MIT",
 	"main": "./out/extension",
-	"name": "apexrunner",
+	"name": "apex-code-runner",
 	"publishConfig": {
 		"access": "public"
 	},
