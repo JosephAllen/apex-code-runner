@@ -1,15 +1,13 @@
 'use strict';
-import { Channel } from './channel';
-import * as xml2js from 'xml2js';
-import * as vscode from 'vscode';
 import fetch from 'node-fetch';
+import * as vscode from 'vscode';
+import * as xml2js from 'xml2js';
+import { Channel } from './channel';
 export class ApexApi {
     private static source() {
         const editor = vscode.window.activeTextEditor;
         if (editor) {
-            const document = editor.document;
-            const selection = editor.selection;
-            return document.getText(selection);
+            return editor.document.getText(editor.selection);
         }
     }
     public static async executeAnonymous(): Promise < void > {
@@ -54,26 +52,24 @@ export class ApexApi {
                 'Content-Type': 'text/xml;charset=UTF-8',
                 'SOAPAction': '""'
             },
-        }).then((res: any) => res.text()).then((response: string) => {
+        }).then((res) => res.text()).then((response) => {
             this.parse(response);
         });
     }
     private static parse(xml: string) {
-        var parseString = require('xml2js').parseString;
-        var stripNS = require('xml2js').processors.stripPrefix;
-        let parseOptions = {
+        const stripNS = xml2js.processors.stripPrefix;
+        const parseOptions = {
             emptyTag: null,
             explicitArray: false,
             ignoreAttrs: true,
             normalizeTags: false,
             tagNameProcessors: [stripNS]
         };
-        parseString(xml, parseOptions, function(err: any, result: any) {
+        xml2js.parseString(xml, parseOptions, function(err, result) {
             let channel = Channel.getInstance();
-            var response = {};
             const env = result.Envelope;
             if (env.Body.hasOwnProperty('Fault')) {
-                response = env.Body.Fault;
+                // response = env.Body.Fault;
             }
             else {
                 let message = '';

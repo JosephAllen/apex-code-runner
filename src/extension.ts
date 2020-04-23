@@ -1,7 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
+import { ApexApi } from './services/apexApi';
 import * as auth from './services/authenticate';
-import { ApexApi } from './services/apexapi';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
