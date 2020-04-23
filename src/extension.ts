@@ -1,22 +1,19 @@
 'use strict';
 import * as vscode from 'vscode';
 import * as auth from './services/authenticate';
+import { ApexApi } from './services/apexapi';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
     auth.setAuthInfo();
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "apexrunner" is now active!');
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('apexrunner.helloWorld', () => {
-        // The code you place here will be executed every time your command is executed
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World from apexrunner!');
+    console.log('Apex Runner Extension is Activated');
+    const executeAnonymous = vscode.commands.registerCommand('apexrunner.executeAnonymous', () => {
+        //const msg = vscode.window.showInformationMessage('Executing Code', 'Cancel');
+        ApexApi.executeAnonymous();
     });
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(executeAnonymous);
 }
 // this method is called when your extension is deactivated
 export function deactivate() {}

@@ -1,7 +1,7 @@
 {
 	"activationEvents": [
 		"workspaceContains:sfdx-project.json",
-		"onCommand:apexrunner.helloWorld"
+		"onCommand:apexrunner.executeAnonymous"
 	],
 	"author": "Joseph Allen",
 	"bugs": {
@@ -13,8 +13,9 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "anonapex.helloWorld",
-				"title": "Hello World"
+				"command": "apexrunner.executeAnonymous",
+				"title": "ApexRunner: Execute Anonymous",
+				"when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
 			}
 		],
 		"keybindings": [],
@@ -26,22 +27,46 @@
 				"extensions": [
 					".apex",
 					".cls",
-					".trigger",
-					".tgr"
+					".soql"
 				],
 				"id": "apex"
 			}
 		],
 		"menus": {
-			"commandPalette": [],
-			"editor/context": [],
-			"editor/title": [],
-			"explorer/context": [],
+			"commandPalette": [
+				{
+					"command": "apexrunner.executeAnonymous",
+					"group": "ApexRunner",
+					"when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "apexrunner.executeAnonymous",
+					"group": "ApexRunner",
+					"when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "apexrunner.executeAnonymous",
+					"group": "ApexRunner",
+					"when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "apexrunner.executeAnonymous",
+					"group": "ApexRunner",
+					"when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+				}
+			],
 			"view/item/context": []
 		}
 	},
 	"dependencies": {
-		"@salesforce/core": "^2.3.1"
+		"@salesforce/core": "^2.3.1",
+		"@types/node-fetch": "^2.5.6"
 	},
 	"description": "Executes Apex code and quickly returns a formatted User Debug",
 	"devDependencies": {
@@ -49,7 +74,9 @@
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^7.0.2",
 		"@types/node": "^13.11.0",
+		"@types/node-fetch": "^2.5.6",
 		"@types/vscode": "^1.44.0",
+		"@types/xml2js": "^0.4.5",
 		"@typescript-eslint/eslint-plugin": "^2.26.0",
 		"@typescript-eslint/parser": "^2.26.0",
 		"eslint": "^6.8.0",

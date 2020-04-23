@@ -4,7 +4,7 @@ const {
     AuthInfo
 } = require('@salesforce/core');
 
-let source = "System.debug(\'Hello World!\');"
+let source = "System.debug(\'Hello World!\');";
 //let source = "System.debug(Page.SessionId.getContent().toString());"
 execAnon(source);
 

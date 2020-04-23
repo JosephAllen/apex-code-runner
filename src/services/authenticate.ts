@@ -13,6 +13,7 @@ export async function setAuthInfo() {
         username: username
     });
     const auth = authInfo.getConnectionOptions();
-    process.env.APEX_RUNNER_AUTH_INFO = JSON.stringify({ accessToken: auth.accessToken, instanceUrl: auth.instanceUrl });
-    console.log(process.env.APEX_RUNNER_AUTH_INFO);
+    process.env.APXR_AUTH_INFO = JSON.stringify({ accessToken: auth.accessToken, instanceUrl: auth.instanceUrl });
+    //console.log(process.env.APEX_RUNNER_AUTH_INFO);
+    vscode.commands.executeCommand('setContext', 'APXRActive', true);
 }
