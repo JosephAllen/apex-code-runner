@@ -1,12 +1,31 @@
 # Apex Code Runner
 
-Apex Code Runner is a simple, fast and graceful tool for running Apex or Soql scripts within VS Code.
+[![Logo](./images/logo.png)]
+
+Apex Code Runner is a simple, fast and graceful tool for running `Apex` or `SOQL` scripts within VS Code. This extension executes simple scripts and returns results significantly faster that the Salesforce Extensions Pack.
 
 ## Features
 
 - Executes Apex code
-- Returns clean `system.debug` responses
-- Returns Full Debug Log
+- Returns __CLEAN__ `System.debug` responses
+- Returns full debug log in a secondary output
+- Output panels refresh with each execution. _No more scrolling of repetitive output_
+
+### Clean User Debug Without the Clutter of a Full Debug Log
+
+![Clean User Debug Without the Clutter of a Full Debug Log](./images/userDebug.png)
+
+### Full Debug Log Too
+
+![Full Debug Log Too](./images/fullDebugLog.png)
+
+### Context Menu Where You Need It
+
+![Context Menu Where You Need It](./images/contextMenu.png)
+
+### Command Palette Menu When Needed
+
+![Command Palette When Needed](./images/commandPalette.png)
 
 ## Requirements
 
@@ -34,15 +53,10 @@ Here are some of the projects that were the primary inspiration and templates fo
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+This extension is currently in beta
 
 ### 0.0.1
 
-Initial release of ...
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Initial release of Apex Code Runner
 
 **Enjoy!**
