@@ -89,12 +89,16 @@
 	"homepage": "https://github.com/JosephAllen/apex-code-runne",
 	"icon": "images/icon.png",
 	"keywords": [
+		"Anonymous Apex",
 		"apex",
+		"apex-anon",
 		"debug",
 		"force",
 		"salesforce",
 		"salesforcedx",
-		"sfdx"
+		"sfdx",
+		"soql",
+		"system.debug"
 	],
 	"license": "MIT",
 	"main": "./out/extension",
