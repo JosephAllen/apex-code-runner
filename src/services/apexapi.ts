@@ -67,7 +67,6 @@ export class ApexApi {
             tagNameProcessors: [stripNS]
         };
         xml2js.parseString(xml, parseOptions, function(err, result) {
-            //const env = result.Envelope;
             const message = parseEnvelope(result.Envelope);
             let channel = Channel.getInstance();
             channel.writeLog(message);
