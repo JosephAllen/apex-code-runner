@@ -1,6 +1,6 @@
 # Apex Code Runner
 
-This is the README for your extension "Apex Code Runner". After writing up a brief description, we recommend including the following sections.
+Apex Code Runner is a simple, fast and graceful tool for running Apex or Soql scripts within VS Code.
 
 ## Features
 
@@ -10,22 +10,18 @@ This is the README for your extension "Apex Code Runner". After writing up a bri
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- One of the following is required:
+  - [SFDX-CLI](https://developer.salesforce.com/tools/sfdxcli)
+  - [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode)
+  - [@salesforce/core](https://www.npmjs.com/package/@salesforce/core) npm module
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+None - it just works!
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+N/A
 
 ## Inspirational Projects
 
