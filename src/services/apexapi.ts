@@ -30,8 +30,8 @@ export async function executeAnonymous(): Promise < void > {
                             level: 'Debug'
                             },
                         {
-                            category: 'APEX_PROFILING',
-                            level: 'Info'
+                            category: 'Apex_profiling',
+                            level: 'Finest'
                             }
                         ]
                 },

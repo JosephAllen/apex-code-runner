@@ -1,5 +1,6 @@
 out
 node_modules
+scripts
 sfdx-project.json
 .sfdx
 .vscode-test/

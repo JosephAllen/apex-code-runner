@@ -8,16 +8,160 @@
 		"url": "https://github.com/JosephAllen/apex-code-runner/issues"
 	},
 	"categories": [
-		"Other"
+		"Debuggers",
+		"Other",
+		"Programming Languages"
 	],
 	"contributes": {
 		"commands": [
 			{
+				"category": "Apex",
 				"command": "apexrunner.executeAnonymous",
-				"title": "Executes anonymous apex against SFDX project org/sandbox using the current .apex or .soql file",
+				"title": "Execute Anonymous",
 				"when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
 			}
 		],
+		"configuration": {
+			"properties": {
+				"apex-code-runner.preferredWindow": {
+					"default": "userDebug",
+					"description": "Output window to display when execution completes. You can view either at any time.",
+					"type": "string",
+					"enum": [
+						"userDebug",
+						"fullLog"
+					],
+					"enumDescriptions": [
+						"Shows only system.debug statements (and errors)",
+						"Shows the Full log will show the full log."
+					]
+				},
+				"apex-code-runner.logCategoryOptions": {
+					"default": {
+						"Apex_code": "Debug",
+						"Apex_profiling": "Info",
+						"Callout": "Info",
+						"Db": "None",
+						"System": "Debug",
+						"Validation": "None",
+						"VisualForce": "Info",
+						"Workflow": "Info"
+					},
+					"description": "FUTURE USE: Debugging Levels",
+					"properties": {
+						"Apex_code": {
+							"enum": [
+								"Error",
+								"Warn",
+								"Info",
+								"Debug",
+								"Fine",
+								"Finer",
+								"Finest"
+							],
+							"type": "string"
+						},
+						"Apex_profiling": {
+							"enum": [
+								"None",
+								"Error",
+								"Warn",
+								"Info",
+								"Debug",
+								"Fine",
+								"Finer",
+								"Finest"
+							],
+							"type": "string"
+						},
+						"Callout": {
+							"enum": [
+								"None",
+								"Error",
+								"Warn",
+								"Info",
+								"Debug",
+								"Fine",
+								"Finer",
+								"Finest"
+							],
+							"type": "string"
+						},
+						"Db": {
+							"enum": [
+								"None",
+								"Error",
+								"Warn",
+								"Info",
+								"Debug",
+								"Fine",
+								"Finer",
+								"Finest"
+							],
+							"type": "string"
+						},
+						"System": {
+							"enum": [
+								"None",
+								"Error",
+								"Warn",
+								"Info",
+								"Debug",
+								"Fine",
+								"Finer",
+								"Finest"
+							],
+							"type": "string"
+						},
+						"Validation": {
+							"enum": [
+								"None",
+								"Error",
+								"Warn",
+								"Info",
+								"Debug",
+								"Fine",
+								"Finer",
+								"Finest"
+							],
+							"type": "string"
+						},
+						"VisualForce": {
+							"enum": [
+								"None",
+								"Error",
+								"Warn",
+								"Info",
+								"Debug",
+								"Fine",
+								"Finer",
+								"Finest"
+							],
+							"type": "string"
+						},
+						"Workflow": {
+							"enum": [
+								"None",
+								"Error",
+								"Warn",
+								"Info",
+								"Debug",
+								"Fine",
+								"Finer",
+								"Finest"
+							],
+							"type": "string"
+						}
+					},
+					"required": [
+						"Apex_code"
+					],
+					"type": "object"
+				}
+			},
+			"title": "Apex Code Runner",
+			"type": "object"
+		},
 		"keybindings": [],
 		"languages": [
 			{
@@ -61,8 +205,8 @@
 	"dependencies": {
 		"@salesforce/core": "^2.3.1",
 		"@types/node-fetch": "^2.5.6",
-		"xml2js": "^0.4.23",
-		"node-fetch": "^2.6.0"
+		"node-fetch": "^2.6.0",
+		"xml2js": "^0.4.23"
 	},
 	"description": "Execute Apex scripts in a Salesforce project",
 	"devDependencies": {
