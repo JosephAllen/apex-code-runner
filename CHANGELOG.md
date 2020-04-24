@@ -4,4 +4,4 @@ All notable changes to the "apex-code-runner" extension will be documented in th
 
 ## 0.0.1
 
-- Pre-release
+- Beta release
