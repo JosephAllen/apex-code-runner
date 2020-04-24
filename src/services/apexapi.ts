@@ -17,6 +17,7 @@ export async function executeAnonymous(): Promise < void > {
     const authInfo = JSON.parse('' + process.env.APXR_AUTH_INFO);
     const accessToken = authInfo.accessToken;
     const instanceUrl = authInfo.instanceUrl;
+    //const categories = getCategories();
     let env = {
         'soap:Envelope': {
             $: {
@@ -25,15 +26,7 @@ export async function executeAnonymous(): Promise < void > {
             },
             'soap:Header': {
                 DebuggingHeader: {
-                    categories: [{
-                            category: 'Apex_code',
-                            level: 'Debug'
-                            },
-                        {
-                            category: 'Apex_profiling',
-                            level: 'Finest'
-                            }
-                        ]
+                    categories: getCategories()
                 },
                 SessionHeader: {
                     sessionId: accessToken
@@ -58,6 +51,15 @@ export async function executeAnonymous(): Promise < void > {
     }).then((res) => res.text()).then((response) => {
         parseXml(response);
     });
+}
+
+function getCategories() {
+    let categories = [];
+    const configOptions = vscode.workspace.getConfiguration('apex-code-runner').logCategoryOptions;
+    for (const [key, value] of Object.entries(configOptions)) {
+        categories.push({ category: key, level: value });
+    }
+    return categories;
 }
 
 function parseXml(xml: string) {

@@ -40,7 +40,20 @@ Speeds up development by showing only what you want.
 
 ## Extension Settings
 
-None - it just works!
+This extension contributes the following settings:
+
+- `apex-code-runner.logCategoryOptions`: Apex log categories with their associated log levels. These only affect the level of detail in the full log output window.
+  - `Apex_code`: Debug
+  - `Apex_profiling`: Info
+  - `Callout`: Info
+  - `Db`: Info
+  - `System`: Debug
+  - `Validation`: Info
+  - `VisualForce`: Info
+  - `Workflow`: Info
+- `apex-code-runner.preferredWindow`: Output window to display when execution completes. You can view either at any time.
+  - `userDebug`: (Default) Shows only system.debug statements (and errors)
+  - `fullLog`: Shows the Full log will show the full log
 
 ## Known Issues
 
@@ -57,10 +70,6 @@ Here are some of the projects that were the primary inspiration and templates fo
 
 ## Release Notes
 
-This extension is currently in beta
-
-### 0.0.1
-
-Initial release of Apex Code Runner
+See the [CHANGELOG.md](./CHANGELOG.md) for current release notes and changes
 
 __Enjoy!__

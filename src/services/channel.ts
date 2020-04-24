@@ -26,6 +26,12 @@ export class Channel {
         this.debugLogChannel.appendLine(data);
     }
     public showLog() {
-        this.userDebugChannel.show(true);
+        const config = vscode.workspace.getConfiguration('apex-code-runner');
+        if (config.preferredWindow !== 'userDebug') {
+            this.debugLogChannel.show(true);
+        }
+        else {
+            this.userDebugChannel.show(true);
+        }
     }
 }

@@ -15,41 +15,28 @@
 	"contributes": {
 		"commands": [
 			{
-				"category": "Apex",
 				"command": "apexrunner.executeAnonymous",
-				"title": "Execute Anonymous",
+				"title": "Apex: Execute Anonymous",
 				"when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
 			}
 		],
 		"configuration": {
 			"properties": {
-				"apex-code-runner.preferredWindow": {
-					"default": "userDebug",
-					"description": "Output window to display when execution completes. You can view either at any time.",
-					"type": "string",
-					"enum": [
-						"userDebug",
-						"fullLog"
-					],
-					"enumDescriptions": [
-						"Shows only system.debug statements (and errors)",
-						"Shows the Full log will show the full log."
-					]
-				},
 				"apex-code-runner.logCategoryOptions": {
 					"default": {
 						"Apex_code": "Debug",
 						"Apex_profiling": "Info",
 						"Callout": "Info",
-						"Db": "None",
+						"Db": "Info",
 						"System": "Debug",
-						"Validation": "None",
+						"Validation": "Info",
 						"VisualForce": "Info",
 						"Workflow": "Info"
 					},
-					"description": "FUTURE USE: Debugging Levels",
+					"description": "Apex log categories with their associated log levels. These only affect the level of detail in the full log output window.",
 					"properties": {
 						"Apex_code": {
+							"default": "Debug",
 							"enum": [
 								"Error",
 								"Warn",
@@ -62,6 +49,7 @@
 							"type": "string"
 						},
 						"Apex_profiling": {
+							"default": "Info",
 							"enum": [
 								"None",
 								"Error",
@@ -75,6 +63,7 @@
 							"type": "string"
 						},
 						"Callout": {
+							"default": "Info",
 							"enum": [
 								"None",
 								"Error",
@@ -88,6 +77,7 @@
 							"type": "string"
 						},
 						"Db": {
+							"default": "Info",
 							"enum": [
 								"None",
 								"Error",
@@ -101,6 +91,7 @@
 							"type": "string"
 						},
 						"System": {
+							"default": "Debug",
 							"enum": [
 								"None",
 								"Error",
@@ -114,6 +105,7 @@
 							"type": "string"
 						},
 						"Validation": {
+							"default": "Info",
 							"enum": [
 								"None",
 								"Error",
@@ -127,6 +119,7 @@
 							"type": "string"
 						},
 						"VisualForce": {
+							"default": "Info",
 							"enum": [
 								"None",
 								"Error",
@@ -140,6 +133,7 @@
 							"type": "string"
 						},
 						"Workflow": {
+							"default": "Info",
 							"enum": [
 								"None",
 								"Error",
@@ -157,6 +151,19 @@
 						"Apex_code"
 					],
 					"type": "object"
+				},
+				"apex-code-runner.preferredWindow": {
+					"default": "userDebug",
+					"description": "Output window to display when execution completes. You can view either at any time.",
+					"enum": [
+						"userDebug",
+						"fullLog"
+					],
+					"enumDescriptions": [
+						"Shows only system.debug statements (and errors)",
+						"Shows the Full log will show the full log"
+					],
+					"type": "string"
 				}
 			},
 			"title": "Apex Code Runner",
@@ -265,5 +272,5 @@
 		"vscode:prepublish": "npm run compile",
 		"watch": "tsc -watch -p ./"
 	},
-	"version": "0.0.1"
+	"version": "0.0.2"
 }
