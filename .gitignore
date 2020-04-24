@@ -1,8 +1,13 @@
-out
+## Dependency directory
+## Commenting this out is preferred by some people, see
+## https://docs.npmjs.com/misc/faq#should-i-check-my-node_modules-folder-into-git
 node_modules
+
+**/.sfdx
+**/.vscode
+out
 scripts
 sfdx-project.json
 .sfdx
 .vscode-test/
 *.vsix
-C:Devnodejsnpm-cache
