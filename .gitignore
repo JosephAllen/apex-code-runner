@@ -3,11 +3,14 @@
 ## https://docs.npmjs.com/misc/faq#should-i-check-my-node_modules-folder-into-git
 node_modules
 
+# Root Files
+sfdx-project.json
+*.vsix
+
+# Folders
 **/.sfdx
 **/.vscode
 out
 scripts
-sfdx-project.json
 .sfdx
 .vscode-test/
-*.vsix
