@@ -64,7 +64,7 @@
 		"xml2js": "^0.4.23",
 		"node-fetch": "^2.6.0"
 	},
-	"description": "Executes Apex code and quickly returns a formatted User Debug",
+	"description": "Execute Apex/SOQL scripts in a Salesforce project",
 	"devDependencies": {
 		"@salesforce/core": "^2.3.1",
 		"@types/glob": "^7.1.1",
@@ -89,16 +89,18 @@
 	"homepage": "https://github.com/JosephAllen/apex-code-runne",
 	"icon": "images/icon.png",
 	"keywords": [
-		"Anonymous Apex",
+		"anonymous apex",
 		"apex",
 		"apex-anon",
+		"console.log",
 		"debug",
-		"force",
+		"salesforce dx",
 		"salesforce",
 		"salesforcedx",
 		"sfdx",
 		"soql",
-		"system.debug"
+		"system.debug",
+		"user debug"
 	],
 	"license": "MIT",
 	"main": "./out/extension",
