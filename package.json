@@ -59,7 +59,10 @@
 		"Joseph Allen (https://github.com/JosephAllen)"
 	],
 	"dependencies": {
-		"@types/node-fetch": "^2.5.6"
+		"@salesforce/core": "^2.3.1",
+		"@types/node-fetch": "^2.5.6",
+		"xml2js": "^0.4.23",
+		"node-fetch": "^2.6.0"
 	},
 	"description": "Executes Apex code and quickly returns a formatted User Debug",
 	"devDependencies": {
