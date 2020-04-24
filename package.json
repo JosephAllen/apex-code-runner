@@ -14,7 +14,7 @@
 		"commands": [
 			{
 				"command": "apexrunner.executeAnonymous",
-				"title": "Apex: Execute Anonymous",
+				"title": "Executes anonymous apex against SFDX project org/sandbox using the current .apex or .soql file",
 				"when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
 			}
 		],
