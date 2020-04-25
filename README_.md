@@ -1,5 +1,13 @@
 # Additional Notes
 
+## Optimizing Load Times
+
+| Date      | Load Time |
+| --------- | --------- |
+| 4/24/2020 | 973ms     |
+
+### Using Web Pack to speed up load times
+
 ## Publishing Extensions
 
 [Publishing](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
