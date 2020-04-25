@@ -18,7 +18,7 @@ vsc-extension-quickstart.md
 .sfdx/**
 .vscode/**
 images/**
-out_BAK/**
+out/test/**
 scripts/**
 src/**
 test/**
