@@ -2,7 +2,7 @@
 import { AuthInfo, SfdxProject } from '@salesforce/core';
 import * as vscode from 'vscode';
 export async function setAuthInfo() {
-    //console.log(JSON.stringifiy)
+    //console.log(JSON.stringify)
     const project = await SfdxProject.resolve(vscode.workspace.rootPath);
     const projectConfig = await project.resolveProjectConfig();
     const authInfo = await AuthInfo.create({
