@@ -13,6 +13,10 @@ vsc-extension-quickstart.md
 **/*.map
 .github/**
 .sfdx/**
+.vscode/**
 images/**
 scripts/**
 src/**/*
+
+## INCLUDE
+!images/icon.png

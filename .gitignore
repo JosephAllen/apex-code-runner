@@ -4,8 +4,9 @@
 node_modules
 
 # Root Files
-sfdx-project.json
 *.vsix
+vsc-extension-quickstart.md
+sfdx-project.json
 
 # Folders
 **/.sfdx
