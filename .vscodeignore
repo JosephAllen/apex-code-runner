@@ -7,6 +7,7 @@ sfdx-project.json
 tsconfig.json
 tslint.json
 vsc-extension-quickstart.md
+webpack.config.js
 
 ## File Patterns
 **/*.js.map
@@ -18,10 +19,15 @@ vsc-extension-quickstart.md
 .sfdx/**
 .vscode/**
 images/**
+node_modules/**/test/**
 out/test/**
 scripts/**
 src/**
 test/**
+
+# After webpack, we have more to ignore
+node_modules
+out/
 
 ## INCLUDE
 !images/icon.png

@@ -76,6 +76,7 @@ function parseXml(xml: string) {
     tagNameProcessors: [stripNS],
   };
   xml2js.parseString(xml, parseOptions, function(err, result) {
+    console.log(JSON.stringify(err, null, 2));
     const env = Object.assign({}, result.Envelope);
     const message = parseEnvelope(env);
     let channel = Channel.getInstance();
