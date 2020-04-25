@@ -11,7 +11,8 @@ sfdx-project.json
 # Folders
 **/.sfdx
 **/.vscode
-out
-scripts
 .sfdx
 .vscode-test/
+out
+scripts
+visx/**
