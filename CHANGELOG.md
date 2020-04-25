@@ -2,6 +2,12 @@
 
 All notable changes to the "apex-code-runner" extension will be documented in this file.
 
+## 0.0.4
+
+### Fixed
+
+- Updated dependencies
+
 ## 0.0.3
 
 ### Added
