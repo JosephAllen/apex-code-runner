@@ -8,15 +8,20 @@ tsconfig.json
 tslint.json
 vsc-extension-quickstart.md
 
-## Folders
+## File Patterns
 **/*.js.map
 **/*.map
+**/*.ts
+
+## Folders
 .github/**
 .sfdx/**
 .vscode/**
 images/**
+out_BAK/**
 scripts/**
-src/**/*
+src/**
+test/**
 
 ## INCLUDE
 !images/icon.png
