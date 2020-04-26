@@ -15,6 +15,7 @@ vsc-extension-quickstart.md
 .sfdx
 .vscode-test/
 dist/**
+node_modules_bak/**
 out
 scripts
 visx/**
