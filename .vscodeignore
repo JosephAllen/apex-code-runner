@@ -2,7 +2,9 @@
 *.vsix
 .gitignore
 .jsbeautifyrc
+.prettierignore
 README_.md
+prettier.config.js
 sfdx-project.json
 tsconfig.json
 tslint.json
@@ -19,15 +21,11 @@ webpack.config.js
 .sfdx/**
 .vscode/**
 images/**
-node_modules/**/test/**
-out/test/**
+node_modules/**
+out/**
 scripts/**
 src/**
 test/**
-
-# After webpack, we have more to ignore
-node_modules
-out/
 
 ## INCLUDE
 !images/icon.png
