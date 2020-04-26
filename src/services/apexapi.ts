@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import * as xml2js from 'xml2js';
 import { parseEnvelope } from '../parsers';
 import { Channel } from './channel';
+const auth = require("./authenticate");
 
 function source() {
     const editor = vscode.window.activeTextEditor;
@@ -13,6 +14,7 @@ function source() {
     return '';
 }
 export async function executeAnonymous(): Promise<void> {
+    await auth.setAuthInfo();
     //TODO: see https://github.com/microsoft/vscode-extension-samples/tree/master/progress-sample for progress
     const authInfo = JSON.parse('' + process.env.APXR_AUTH_INFO);
     const accessToken = authInfo.accessToken;
