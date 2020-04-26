@@ -86,7 +86,7 @@ function parseXml(xml: string) {
             return;
         }
         channel.writeUserLog(message);
-        if (env.Header.DebuggingInfo.debugLog !== null) {
+        if (env.Header !== undefined) {
             channel.writeDebugLog('DEBUG LOG\n' + env.Header.DebuggingInfo.debugLog);
         }
         else {
