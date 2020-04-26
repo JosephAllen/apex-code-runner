@@ -2,6 +2,18 @@
 
 All notable changes to the "apex-code-runner" extension will be documented in this file.
 
+## 0.0.5
+
+### Added
+
+- Much better load performance
+
+### Fixed
+
+- Changed dependencies from npm module `@salesforce/core` to  `extensionDependencies`: `salesforce.salesforcedx-vscode-core`
+- Using the `extensionDependencies` significantly reduced the package size and load time
+  - Package size reduced from 6MB to ~42kb, most of which are documentation
+
 ## 0.0.4
 
 ### Fixed

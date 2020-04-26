@@ -1,5 +1,15 @@
 # Additional Notes
 
+## Optimizing Load Times
+
+| Date      | Load Time |
+| --------- | --------- |
+| 4/24/2020 | 973ms     |
+
+### Using Web Pack to speed up load times
+
+[John Papa Blog](https://dev.to/azure/is-your-vs-code-extension-slow-heres-how-to-speed-it-up-4d66)
+
 ## Publishing Extensions
 
 [Publishing](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
