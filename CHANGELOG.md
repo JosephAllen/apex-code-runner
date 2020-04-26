@@ -2,6 +2,16 @@
 
 All notable changes to the "apex-code-runner" extension will be documented in this file.
 
+## 0.0.7
+
+### Added
+
+- Improved user messages when a session id is invalid
+
+### Fixed
+
+- Handling of invalid session
+
 ## 0.0.6
 
 ### Added

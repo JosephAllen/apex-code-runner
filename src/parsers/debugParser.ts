@@ -1,10 +1,14 @@
 'use strict';
 export function parseEnvelope(envelope: any) {
+    let userDebug = '';
     if (envelope.Body.hasOwnProperty('Fault')) {
-        return 'FATAL_ERROR\n' + envelope.Body.Fault.faultstring;
+        userDebug = 'FATAL_ERROR\n' + envelope.Body.Fault.faultstring;
+        if (userDebug.includes('INVALID_SESSION_ID')) {
+            userDebug += '\n\nExecute `sfdx force:org:display` from the terminal and reload your project';
+        }
+        return userDebug;
     }
     const result = envelope.Body.executeAnonymousResponse.result;
-    let userDebug = '';
     if (result.compiled === 'true' && result.success === 'true') {
         userDebug = parseDebug(envelope.Header.DebuggingInfo.debugLog);
     }
@@ -20,6 +24,7 @@ export function parseEnvelope(envelope: any) {
     if (userDebug.startsWith('\n')) {
         userDebug = userDebug.substring(1);
     }
+
     return userDebug;
 }
 export function parseDebug(debugLog: string) {
