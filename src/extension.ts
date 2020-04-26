@@ -3,7 +3,8 @@ import * as vscode from "vscode";
 
 import { executeAnonymous } from "./services/apexApi";
 
-import * as auth from "./services/authenticate";
+//import * as auth from "./services/authenticate";
+const auth = require("./services/authenticate");
 
 export function activate(context: vscode.ExtensionContext) {
   auth.setAuthInfo();

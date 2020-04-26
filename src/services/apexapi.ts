@@ -1,65 +1,62 @@
-"use strict";
-import fetch from "node-fetch";
-import * as vscode from "vscode";
-import * as xml2js from "xml2js";
-import { parseEnvelope } from "../parsers";
-import { Channel } from "./channel";
+'use strict';
+import fetch from 'node-fetch';
+import * as vscode from 'vscode';
+import * as xml2js from 'xml2js';
+import { parseEnvelope } from '../parsers';
+import { Channel } from './channel';
 
 function source() {
   const editor = vscode.window.activeTextEditor;
   if (editor) {
     return editor.document.getText();
   }
-  return "";
+  return '';
 }
-
 export async function executeAnonymous(): Promise<void> {
   //TODO: see https://github.com/microsoft/vscode-extension-samples/tree/master/progress-sample for progress
-  const authInfo = JSON.parse("" + process.env.APXR_AUTH_INFO);
+  const authInfo = JSON.parse('' + process.env.APXR_AUTH_INFO);
   const accessToken = authInfo.accessToken;
   const instanceUrl = authInfo.instanceUrl;
+  const version = authInfo.version;
   //const categories = getCategories();
   let env = {
-    "soap:Envelope": {
+    'soap:Envelope': {
       $: {
         "xmlns:soap": "http://schemas.xmlsoap.org/soap/envelope/",
-        xmlns: "http://soap.sforce.com/2006/08/apex",
+        "xmlns": "http://soap.sforce.com/2006/08/apex"
       },
-      "soap:Header": {
+      'soap:Header': {
         DebuggingHeader: {
-          categories: getCategories(),
+          categories: getCategories()
         },
         SessionHeader: {
-          sessionId: accessToken,
-        },
+          sessionId: accessToken
+        }
       },
-      "soap:Body": {
+      'soap:Body': {
         executeAnonymous: {
-          String: source(),
-        },
-      },
-    },
+          String: source()
+        }
+      }
+    }
   };
   let builder = new xml2js.Builder();
   let requestBody = builder.buildObject(env);
-  fetch(instanceUrl + "/services/Soap/s/" + process.env.APXR_API_VERSION, {
-    method: "post",
+  fetch(instanceUrl + '/services/Soap/s/' + version, {
+    method: 'post',
     body: requestBody,
     headers: {
-      "Content-Type": "text/xml;charset=UTF-8",
-      SOAPAction: '""',
+      'Content-Type': 'text/xml;charset=UTF-8',
+      'SOAPAction': '""'
     },
-  })
-    .then((res) => res.text())
-    .then((response) => {
-      parseXml(response);
-    });
+  }).then((res) => res.text()).then((response) => {
+    parseXml(response);
+  });
 }
 
 function getCategories() {
   let categories = [];
-  const configOptions = vscode.workspace.getConfiguration("apex-code-runner")
-    .logCategoryOptions;
+  const configOptions = vscode.workspace.getConfiguration('apex-code-runner').logCategoryOptions;
   for (const [key, value] of Object.entries(configOptions)) {
     categories.push({ category: key, level: value });
   }
@@ -73,16 +70,24 @@ function parseXml(xml: string) {
     explicitArray: false,
     ignoreAttrs: true,
     normalizeTags: false,
-    tagNameProcessors: [stripNS],
+    tagNameProcessors: [stripNS]
   };
-  xml2js.parseString(xml, parseOptions, function(err, result) {
+  xml2js.parseString(xml, parseOptions, function (err, result) {
     const env = Object.assign({}, result.Envelope);
     const message = parseEnvelope(env);
     let channel = Channel.getInstance();
+    if (err) {
+      const errMsg = err.toString();
+      channel.writeDebugLog(errMsg);
+      channel.writeUserLog(errMsg);
+      channel.showLog();
+      return;
+    }
     channel.writeUserLog(message);
     if (env.Header.DebuggingInfo.debugLog !== null) {
-      channel.writeDebugLog("DEBUG LOG\n" + env.Header.DebuggingInfo.debugLog);
-    } else {
+      channel.writeDebugLog('DEBUG LOG\n' + env.Header.DebuggingInfo.debugLog);
+    }
+    else {
       channel.writeDebugLog(message);
     }
     channel.showLog();

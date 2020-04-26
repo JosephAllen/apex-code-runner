@@ -2,11 +2,14 @@
 *.vsix
 .gitignore
 .jsbeautifyrc
+.prettierignore
 README_.md
+prettier.config.js
 sfdx-project.json
 tsconfig.json
 tslint.json
 vsc-extension-quickstart.md
+webpack.config.js
 
 ## File Patterns
 **/*.js.map
@@ -18,7 +21,8 @@ vsc-extension-quickstart.md
 .sfdx/**
 .vscode/**
 images/**
-out/test/**
+node_modules/**
+out/**
 scripts/**
 src/**
 test/**
