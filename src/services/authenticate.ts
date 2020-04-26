@@ -4,7 +4,7 @@ const sfdxCoreExports = vscode.extensions.getExtension('salesforce.salesforcedx-
 export async function setAuthInfo() {
     try {
         const orgAuthInfo = await sfdxCoreExports.OrgAuthInfo;
-        const defUserName = await orgAuthInfo.getDefaultUsernameOrAlias();
+        const defUserName = await orgAuthInfo.getDefaultUsernameOrAlias(false);
         const userName = await orgAuthInfo.getUsername(defUserName);
         const connection = await orgAuthInfo.getConnection(userName);
         process.env.APXR_AUTH_INFO = JSON.stringify(
@@ -17,6 +17,6 @@ export async function setAuthInfo() {
         vscode.commands.executeCommand('setContext', 'APXRActive', true);
     }
     catch (err) {
-        console.error(JSON.stringify(err, null, 2));
+        console.error(err);
     }
 }
