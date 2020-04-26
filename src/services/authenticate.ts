@@ -7,7 +7,6 @@ export async function setAuthInfo() {
         const defUserName = await orgAuthInfo.getDefaultUsernameOrAlias(false);
         const userName = await orgAuthInfo.getUsername(defUserName);
         const connection = await orgAuthInfo.getConnection(userName);
-        console.log(connection);
         process.env.APXR_AUTH_INFO = JSON.stringify(
             {
                 accessToken: connection.accessToken,
