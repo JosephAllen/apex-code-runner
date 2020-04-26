@@ -210,7 +210,6 @@
         "Joseph Allen (https://github.com/JosephAllen)"
     ],
     "dependencies": {
-        "@salesforce/core": "^2.4.0",
         "@types/node-fetch": "^2.5.7",
         "node-fetch": "^2.6.0",
         "xml2js": "^0.4.23"
@@ -226,8 +225,6 @@
         "@typescript-eslint/parser": "^2.26.0",
         "eslint": "^6.8.0",
         "glob": "^7.1.6",
-        "minimist": "^1.2.5",
-        "mkdirp": "^1.0.4",
         "mocha": "^7.1.1",
         "request-light": "^0.3.0",
         "ts-loader": "^7.0.1",
@@ -240,6 +237,9 @@
     "engines": {
         "vscode": "^1.44.0"
     },
+    "extensionDependencies": [
+        "salesforce.salesforcedx-vscode-core"
+    ],
     "homepage": "https://github.com/JosephAllen/apex-code-runne",
     "icon": "images/icon.png",
     "keywords": [
@@ -269,16 +269,13 @@
     },
     "scripts": {
         "compile": "webpack --mode none",
-        "just-test": "node node_modules/vscode/bin/test",
-        "package": "npx vsce package",
-        "postinstall": "node node_modules/vscode/bin/install",
-        "publish": "npx vsce publish",
-        "test": "npm run test-compile && node node_modules/vscode/bin/test",
-        "vscode:prepublish": "webpack --mode production",
-        "webpack": "webpack --mode development",
-        "webpack-dev": "webpack --mode development --watch",
+        "package": "rimraf ./dist && rimraf ./*.vsix && webpack --mode production && vsce package",
+        "test": "node ./dist/test/runTest.js",
         "test-compile": "tsc -p ./",
-        "watch": "webpack --mode none --watch"
+        "vscode:prepublish": "webpack --mode production",
+        "watch": "webpack --mode none --watch",
+        "webpack": "webpack --mode development",
+        "webpack-dev": "webpack --mode development --watch"
     },
-    "version": "0.0.4"
+    "version": "0.0.5"
 }
