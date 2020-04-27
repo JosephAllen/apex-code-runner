@@ -21,7 +21,6 @@ export async function executeAnonymous(): Promise<void> {
     const accessToken = authInfo.accessToken;
     const instanceUrl = authInfo.instanceUrl;
     const version = authInfo.version;
-    //const categories = getCategories();
     let env = {
         'soap:Envelope': {
             $: {
