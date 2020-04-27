@@ -4,7 +4,7 @@ export function parseEnvelope(envelope: any) {
     if (envelope.Body.hasOwnProperty('Fault')) {
         userDebug = 'FATAL_ERROR\n' + envelope.Body.Fault.faultstring;
         if (userDebug.includes('INVALID_SESSION_ID')) {
-            userDebug += '\n\nExecute `sfdx force:org:display` from the terminal and reload your project';
+            userDebug += '\n\nExecute `sfdx force:org:open` from the terminal and reload your project';
         }
         return userDebug;
     }
@@ -19,7 +19,6 @@ export function parseEnvelope(envelope: any) {
         userDebug = 'Compile error at line ';
         userDebug += result.line + ' column ' + result.column;
         userDebug += '\n' + result.compileProblem;
-        //txtResult = strBuilder.str;
     }
     if (userDebug.startsWith('\n')) {
         userDebug = userDebug.substring(1);
