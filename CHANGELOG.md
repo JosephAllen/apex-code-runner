@@ -2,6 +2,13 @@
 
 All notable changes to the "apex-code-runner" extension will be documented in this file.
 
+## 0.0.9
+
+### Added
+
+- Updated system message when user gets an invalid session error
+  - use `sfdx force:org:open` from the terminal to verify a valid connection and then reload project window
+
 ## 0.0.8
 
 ### Added
