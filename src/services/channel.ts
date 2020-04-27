@@ -16,13 +16,14 @@ export class Channel {
         }
         return Channel.instance;
     }
-    public writeUserLog(data: string) {
-        //const stringData = data;
+    public clearLogs() {
         this.userDebugChannel.clear();
+        this.debugLogChannel.clear();
+    }
+    public writeUserLog(data: string) {
         this.userDebugChannel.appendLine(data);
     }
     public writeDebugLog(data: string) {
-        this.debugLogChannel.clear();
         this.debugLogChannel.appendLine(data);
     }
     public showLog() {

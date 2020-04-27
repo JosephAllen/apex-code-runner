@@ -2,6 +2,14 @@
 
 All notable changes to the "apex-code-runner" extension will be documented in this file.
 
+## 0.0.8
+
+### Added
+
+- Improved feedback indicators that code is executing
+  - Added progress window to indicate that code is executing
+  - Truncate the output windows when execution begins
+
 ## 0.0.7
 
 ### Added
