@@ -6,6 +6,7 @@ const auth = require("./services/authenticate");
 
 export function activate(context: vscode.ExtensionContext) {
     auth.setAuthInfo();
+    auth.watchDefaultOrg();
 
     const apxrExecuteAnonymous = vscode.commands.registerCommand('apexrunner.executeAnonymous', () => {
         window.withProgress({
@@ -13,11 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
             title: "Executing Code...",
             cancellable: true
         }, async () => {
-            await executeAnonymous();
-            var p = new Promise(resolve => {
-                resolve();
-            });
-            return p;
+            return await executeAnonymous();
         });
     });
     context.subscriptions.push(apxrExecuteAnonymous);

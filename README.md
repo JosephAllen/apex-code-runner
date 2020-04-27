@@ -1,7 +1,5 @@
 # Apex Code Runner
 
-[![Logo](./images/logo.png)]
-
 Apex Code Runner is a simple, fast and graceful tool for running `Apex` scripts within VS Code. This extension executes simple scripts and returns results significantly faster than the Salesforce Extensions Pack.
 
 > __NOTES:__
