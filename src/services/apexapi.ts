@@ -4,7 +4,6 @@ import * as vscode from 'vscode';
 import * as xml2js from 'xml2js';
 import { parseEnvelope } from '../parsers';
 import { Channel } from './channel';
-const auth = require("./authenticate");
 const channel = Channel.getInstance();
 
 function source() {
@@ -15,8 +14,8 @@ function source() {
     return '';
 }
 export async function executeAnonymous(): Promise<void> {
+
     channel.clearLogs();
-    await auth.setAuthInfo();
     const authInfo = JSON.parse('' + process.env.APXR_AUTH_INFO);
     const accessToken = authInfo.accessToken;
     const instanceUrl = authInfo.instanceUrl;
