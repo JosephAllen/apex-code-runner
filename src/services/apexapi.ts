@@ -5,6 +5,7 @@ import * as xml2js from 'xml2js';
 import { parseEnvelope } from '../parsers';
 import { Channel } from './channel';
 const auth = require("./authenticate");
+const channel = Channel.getInstance();
 
 function source() {
     const editor = vscode.window.activeTextEditor;
@@ -14,8 +15,8 @@ function source() {
     return '';
 }
 export async function executeAnonymous(): Promise<void> {
+    channel.clearLogs();
     await auth.setAuthInfo();
-    //TODO: see https://github.com/microsoft/vscode-extension-samples/tree/master/progress-sample for progress
     const authInfo = JSON.parse('' + process.env.APXR_AUTH_INFO);
     const accessToken = authInfo.accessToken;
     const instanceUrl = authInfo.instanceUrl;
@@ -44,7 +45,7 @@ export async function executeAnonymous(): Promise<void> {
     };
     let builder = new xml2js.Builder();
     let requestBody = builder.buildObject(env);
-    fetch(instanceUrl + '/services/Soap/s/' + version, {
+    await fetch(instanceUrl + '/services/Soap/s/' + version, {
         method: 'post',
         body: requestBody,
         headers: {
@@ -77,7 +78,6 @@ function parseXml(xml: string) {
     xml2js.parseString(xml, parseOptions, function (err, result) {
         const env = Object.assign({}, result.Envelope);
         const message = parseEnvelope(env);
-        let channel = Channel.getInstance();
         if (err) {
             const errMsg = err.toString();
             channel.writeDebugLog(errMsg);
