@@ -6,23 +6,24 @@ export class Channel {
     private readonly userDebugChannel: vscode.OutputChannel;
     private readonly debugLogChannel: vscode.OutputChannel;
     private static instance: Channel;
-    constructor(channel ? : vscode.OutputChannel) {
+    constructor(channel?: vscode.OutputChannel) {
         this.userDebugChannel = channel || USER_DEBUG_CHANNEL;
         this.debugLogChannel = channel || DEBUG_LOG_CHANNEL;
     }
-    public static getInstance(channel ? : vscode.OutputChannel) {
+    public static getInstance(channel?: vscode.OutputChannel) {
         if (!Channel.instance) {
             Channel.instance = new Channel(channel);
         }
         return Channel.instance;
     }
-    public writeUserLog(data: string) {
-        //const stringData = data;
+    public clearLogs() {
         this.userDebugChannel.clear();
+        this.debugLogChannel.clear();
+    }
+    public writeUserLog(data: string) {
         this.userDebugChannel.appendLine(data);
     }
     public writeDebugLog(data: string) {
-        this.debugLogChannel.clear();
         this.debugLogChannel.appendLine(data);
     }
     public showLog() {
