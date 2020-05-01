@@ -2,6 +2,12 @@
 
 All notable changes to the "apex-code-runner" extension will be documented in this file.
 
+## 0.1.1
+
+### Fixed
+
+- Added support for getting latest accessToken for org. This should mitigate the need for running `sfdx force:org:open`
+
 ## 0.1.0
 
 ### Added
