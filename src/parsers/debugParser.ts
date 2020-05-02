@@ -1,10 +1,14 @@
 'use strict';
+import * as vscode from 'vscode';
+import { showTokenRefresh } from '../services';
 export function parseEnvelope(envelope: any) {
     let userDebug = '';
     if (envelope.Body.hasOwnProperty('Fault')) {
         userDebug = 'FATAL_ERROR\n' + envelope.Body.Fault.faultstring;
         if (userDebug.includes('INVALID_SESSION_ID')) {
-            userDebug += '\n\nExecute `sfdx force:org:open` from the terminal and reload your project';
+            vscode.commands.executeCommand('setContext', 'APXRActive', false);
+            showTokenRefresh();
+            userDebug += '\n\nSelect "Apex: Refresh Access Token" and try execution again.';
         }
         return userDebug;
     }
