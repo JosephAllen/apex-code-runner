@@ -19,6 +19,7 @@ export async function setAuthInfo() {
         const stdout = await require('child_process').execSync('sfdx force:org:display --json -u ' + defUserName).toString();
         const displayResult = JSON.parse(stdout);
         authInfo.accessToken = displayResult.result.accessToken;
+        //Save the token info to an environment variable for future use
         process.env.APXR_AUTH_INFO = JSON.stringify(authInfo);
         vscode.commands.executeCommand('setContext', 'APXRActive', true);
         sbiRefresh.hide();

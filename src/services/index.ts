@@ -1,2 +1,2 @@
 'use strict';
-export { hideTokenRefresh } from './authenticate';
+export { showTokenRefresh } from './authenticate';
