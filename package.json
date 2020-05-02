@@ -18,6 +18,10 @@
                 "command": "apexrunner.executeAnonymous",
                 "title": "Apex: Execute Anonymous",
                 "when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+            },
+            {
+                "command": "apexrunner.refreshToken",
+                "title": "Apex: Refresh Access Token"
             }
         ],
         "configuration": {
@@ -195,6 +199,10 @@
                     "command": "apexrunner.executeAnonymous",
                     "group": "ApexRunner",
                     "when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+                },
+                {
+                    "command": "apexrunner.refreshToken",
+                    "group": "ApexRunner"
                 }
             ],
             "editor/title": [

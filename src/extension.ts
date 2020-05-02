@@ -18,5 +18,16 @@ export function activate(context: vscode.ExtensionContext) {
         });
     });
     context.subscriptions.push(apxrExecuteAnonymous);
+
+    const apxrRefreshToken = vscode.commands.registerCommand('apexrunner.refreshToken', () => {
+        window.withProgress({
+            location: ProgressLocation.Notification,
+            title: "Refreshing Access Token...",
+            cancellable: false
+        }, async () => {
+            return await auth.setAuthInfo();
+        });
+    });
+    context.subscriptions.push(apxrRefreshToken);
 }
 export function deactivate() { }
