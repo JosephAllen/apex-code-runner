@@ -4,6 +4,7 @@ import { workspace } from 'vscode';
 import * as path from 'path';
 const sbiRefresh = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 0);
 const sfdxCoreExports = vscode.extensions.getExtension('salesforce.salesforcedx-vscode-core')!.exports;
+//const { exec } = require('child_process');
 export async function setAuthInfo() {
     try {
         const orgAuthInfo = await sfdxCoreExports.OrgAuthInfo;
