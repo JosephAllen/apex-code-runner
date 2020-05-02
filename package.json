@@ -192,6 +192,10 @@
                     "command": "apexrunner.executeAnonymous",
                     "group": "ApexRunner",
                     "when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+                },
+                {
+                    "command": "apexrunner.refreshToken",
+                    "group": "ApexRunner"
                 }
             ],
             "editor/context": [
@@ -202,14 +206,8 @@
                 },
                 {
                     "command": "apexrunner.refreshToken",
-                    "group": "ApexRunner"
-                }
-            ],
-            "editor/title": [
-                {
-                    "command": "apexrunner.executeAnonymous",
                     "group": "ApexRunner",
-                    "when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+                    "when": "APXRActive == false"
                 }
             ]
         }

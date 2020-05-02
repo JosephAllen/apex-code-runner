@@ -1,9 +1,13 @@
 'use strict';
+import * as vscode from 'vscode';
+import { hideTokenRefresh } from '../services';
 export function parseEnvelope(envelope: any) {
     let userDebug = '';
     if (envelope.Body.hasOwnProperty('Fault')) {
         userDebug = 'FATAL_ERROR\n' + envelope.Body.Fault.faultstring;
         if (userDebug.includes('INVALID_SESSION_ID')) {
+            vscode.commands.executeCommand('setContext', 'APXRActive', false);
+            hideTokenRefresh();
             userDebug += '\n\nExecute `sfdx force:org:open` from the terminal and reload your project';
         }
         return userDebug;
