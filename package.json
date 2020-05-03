@@ -221,6 +221,7 @@
     },
     "description": "Execute Apex scripts in a Salesforce project",
     "devDependencies": {
+        "@types/jest": "^25.2.1",
         "@types/node": "^13.11.0",
         "@types/node-fetch": "^2.5.7",
         "@types/vscode": "^1.44.0",
@@ -228,6 +229,10 @@
         "@typescript-eslint/eslint-plugin": "^2.26.0",
         "@typescript-eslint/parser": "^2.26.0",
         "eslint": "^6.8.0",
+        "jest": "^25.5.4",
+        "jest-editor-support": "^27.2.0",
+        "jest-snapshot": "^25.5.1",
+        "ts-jest": "^25.4.0",
         "ts-loader": "^7.0.1",
         "typescript": "^3.8.3",
         "vscode-test": "^1.3.0",

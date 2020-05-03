@@ -22,7 +22,7 @@
     "exclude": [
         "node_modules",
         "out",
-        "test",
+        "tests",
         ".vscode-test"
     ]
 }
