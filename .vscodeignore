@@ -21,11 +21,12 @@ webpack.config.js
 .sfdx/**
 .vscode/**
 images/**
+__mocks__/**
 node_modules/**
 out/**
 scripts/**
 src/**
-test/**
+tests/**
 
 ## INCLUDE
 !images/icon.png

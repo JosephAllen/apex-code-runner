@@ -30,4 +30,8 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(apxrExecuteAnonymous);
     context.subscriptions.push(apxrRefreshToken);
 }
-export function deactivate() { }
+export function deactivate(context: vscode.ExtensionContext) {
+    context.subscriptions.forEach(element => {
+        element.dispose();
+    });
+}

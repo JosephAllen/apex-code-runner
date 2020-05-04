@@ -276,7 +276,7 @@
     "scripts": {
         "compile": "webpack --mode none",
         "package": "rimraf ./dist && rimraf ./*.vsix && webpack --mode production && vsce package",
-        "test": "node ./dist/test/runTest.js",
+        "test": "jest",
         "test-compile": "tsc -p ./",
         "vscode:prepublish": "webpack --mode production",
         "watch": "webpack --mode none --watch",

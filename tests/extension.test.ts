@@ -1,15 +1,55 @@
-import * as assert from 'assert';
+jest.unmock('../src/extension')
+const extensionName = 'apex-code-runner'
+const statusBar = {
+    register: jest.fn(() => []),
+}
+//import * as vscode from 'vscode';
+import { activate, deactivate } from '../src/extension';
 
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
-import * as vscode from 'vscode';
-// import * as myExtension from '../extension';
+describe('Extension', () => {
+    const context: any = {
+        subscriptions: {
+            push: jest.fn(),
+        },
+    }
+    beforeEach(() => {
+        context.subscriptions.push.mockReset();
+    })
+    describe('activate()', () => {
 
-suite('Extension Test Suite', () => {
-	vscode.window.showInformationMessage('Start all tests.');
+        it('should register statusBar', () => {
+            statusBar.register.mockClear();
+            activate(context);
+            expect(statusBar.register).toHaveBeenCalled();
+        })
+        describe('should register a command', () => {
+            beforeEach(() => {
+                // jestInstance.toggleCoverageOverlay.mockReset()
+                // jestInstance.runTest.mockReset()
+                // jestInstance.startProcess.mockReset()
+                // jestInstance.stopProcess.mockReset()
+                // jestInstance.restartProcess.mockReset()
+            })
 
-	test('Sample test', () => {
-		assert.equal(-1, [1, 2, 3].indexOf(5));
-		assert.equal(-1, [1, 2, 3].indexOf(0));
-	});
-});
+            it('to start extension', () => {
+                activate(context)
+                const callArg = context.subscriptions.push.mock.calls[0].find((args: string[]) => {
+                    return args[0] === `${extensionName}.start`
+                })
+
+                expect(callArg).toBeDefined()
+                callArg[1](undefined)
+                expect(1 === 1)
+                // callArg[1](jestInstance)
+                // expect(jestInstance.startProcess).toHaveBeenCalled()
+            })
+        })
+    })
+    describe('deactivate()', () => {
+        it('should call unregisterAll on instancesManager', () => {
+            deactivate(context)
+            expect(context.subscriptions.length == 0);
+            //expect(extensionManager.unregisterAll).toBeCalled()
+        })
+    })
+})
