@@ -237,7 +237,7 @@
     "webpack": "^5.67.0",
     "webpack-cli": "^3.3.12"
   },
-  "displayName": "Apex Code Runner",
+  "displayName": "Salesforce Apex Code Runner",
   "engines": {
     "vscode": "^1.44.1"
   },
