@@ -223,7 +223,7 @@
   "devDependencies": {
     "@types/node": "^13.13.52",
     "@types/node-fetch": "^2.5.12",
-    "@types/vscode": "^1.63.1",
+    "@types/vscode": "^1.44.1",
     "@types/xml2js": "^0.4.9",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
@@ -239,7 +239,7 @@
   },
   "displayName": "Apex Code Runner",
   "engines": {
-    "vscode": "^1.44.0"
+    "vscode": "^1.44.1"
   },
   "extensionDependencies": [
     "salesforce.salesforcedx-vscode-core"
