@@ -1,285 +1,285 @@
 {
-    "activationEvents": [
-        "workspaceContains:sfdx-project.json",
-        "onCommand:apexrunner.executeAnonymous"
+  "activationEvents": [
+    "workspaceContains:sfdx-project.json",
+    "onCommand:apexrunner.executeAnonymous"
+  ],
+  "author": "Joseph Allen",
+  "bugs": {
+    "url": "https://github.com/JosephAllen/apex-code-runner/issues"
+  },
+  "categories": [
+    "Debuggers",
+    "Other",
+    "Programming Languages"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "apexrunner.executeAnonymous",
+        "title": "Apex: Execute Anonymous",
+        "when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+      },
+      {
+        "command": "apexrunner.refreshToken",
+        "title": "Apex: Refresh Access Token"
+      }
     ],
-    "author": "Joseph Allen",
-    "bugs": {
-        "url": "https://github.com/JosephAllen/apex-code-runner/issues"
-    },
-    "categories": [
-        "Debuggers",
-        "Other",
-        "Programming Languages"
-    ],
-    "contributes": {
-        "commands": [
-            {
-                "command": "apexrunner.executeAnonymous",
-                "title": "Apex: Execute Anonymous",
-                "when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+    "configuration": {
+      "properties": {
+        "apex-code-runner.logCategoryOptions": {
+          "default": {
+            "Apex_code": "Debug",
+            "Apex_profiling": "Info",
+            "Callout": "Info",
+            "Db": "Info",
+            "System": "Debug",
+            "Validation": "Info",
+            "VisualForce": "Info",
+            "Workflow": "Info"
+          },
+          "description": "Apex log categories with their associated log levels. These only affect the level of detail in the full log output window.",
+          "properties": {
+            "Apex_code": {
+              "default": "Debug",
+              "enum": [
+                "Error",
+                "Warn",
+                "Info",
+                "Debug",
+                "Fine",
+                "Finer",
+                "Finest"
+              ],
+              "type": "string"
             },
-            {
-                "command": "apexrunner.refreshToken",
-                "title": "Apex: Refresh Access Token"
+            "Apex_profiling": {
+              "default": "Info",
+              "enum": [
+                "None",
+                "Error",
+                "Warn",
+                "Info",
+                "Debug",
+                "Fine",
+                "Finer",
+                "Finest"
+              ],
+              "type": "string"
+            },
+            "Callout": {
+              "default": "Info",
+              "enum": [
+                "None",
+                "Error",
+                "Warn",
+                "Info",
+                "Debug",
+                "Fine",
+                "Finer",
+                "Finest"
+              ],
+              "type": "string"
+            },
+            "Db": {
+              "default": "Info",
+              "enum": [
+                "None",
+                "Error",
+                "Warn",
+                "Info",
+                "Debug",
+                "Fine",
+                "Finer",
+                "Finest"
+              ],
+              "type": "string"
+            },
+            "System": {
+              "default": "Debug",
+              "enum": [
+                "None",
+                "Error",
+                "Warn",
+                "Info",
+                "Debug",
+                "Fine",
+                "Finer",
+                "Finest"
+              ],
+              "type": "string"
+            },
+            "Validation": {
+              "default": "Info",
+              "enum": [
+                "None",
+                "Error",
+                "Warn",
+                "Info",
+                "Debug",
+                "Fine",
+                "Finer",
+                "Finest"
+              ],
+              "type": "string"
+            },
+            "VisualForce": {
+              "default": "Info",
+              "enum": [
+                "None",
+                "Error",
+                "Warn",
+                "Info",
+                "Debug",
+                "Fine",
+                "Finer",
+                "Finest"
+              ],
+              "type": "string"
+            },
+            "Workflow": {
+              "default": "Info",
+              "enum": [
+                "None",
+                "Error",
+                "Warn",
+                "Info",
+                "Debug",
+                "Fine",
+                "Finer",
+                "Finest"
+              ],
+              "type": "string"
             }
-        ],
-        "configuration": {
-            "properties": {
-                "apex-code-runner.logCategoryOptions": {
-                    "default": {
-                        "Apex_code": "Debug",
-                        "Apex_profiling": "Info",
-                        "Callout": "Info",
-                        "Db": "Info",
-                        "System": "Debug",
-                        "Validation": "Info",
-                        "VisualForce": "Info",
-                        "Workflow": "Info"
-                    },
-                    "description": "Apex log categories with their associated log levels. These only affect the level of detail in the full log output window.",
-                    "properties": {
-                        "Apex_code": {
-                            "default": "Debug",
-                            "enum": [
-                                "Error",
-                                "Warn",
-                                "Info",
-                                "Debug",
-                                "Fine",
-                                "Finer",
-                                "Finest"
-                            ],
-                            "type": "string"
-                        },
-                        "Apex_profiling": {
-                            "default": "Info",
-                            "enum": [
-                                "None",
-                                "Error",
-                                "Warn",
-                                "Info",
-                                "Debug",
-                                "Fine",
-                                "Finer",
-                                "Finest"
-                            ],
-                            "type": "string"
-                        },
-                        "Callout": {
-                            "default": "Info",
-                            "enum": [
-                                "None",
-                                "Error",
-                                "Warn",
-                                "Info",
-                                "Debug",
-                                "Fine",
-                                "Finer",
-                                "Finest"
-                            ],
-                            "type": "string"
-                        },
-                        "Db": {
-                            "default": "Info",
-                            "enum": [
-                                "None",
-                                "Error",
-                                "Warn",
-                                "Info",
-                                "Debug",
-                                "Fine",
-                                "Finer",
-                                "Finest"
-                            ],
-                            "type": "string"
-                        },
-                        "System": {
-                            "default": "Debug",
-                            "enum": [
-                                "None",
-                                "Error",
-                                "Warn",
-                                "Info",
-                                "Debug",
-                                "Fine",
-                                "Finer",
-                                "Finest"
-                            ],
-                            "type": "string"
-                        },
-                        "Validation": {
-                            "default": "Info",
-                            "enum": [
-                                "None",
-                                "Error",
-                                "Warn",
-                                "Info",
-                                "Debug",
-                                "Fine",
-                                "Finer",
-                                "Finest"
-                            ],
-                            "type": "string"
-                        },
-                        "VisualForce": {
-                            "default": "Info",
-                            "enum": [
-                                "None",
-                                "Error",
-                                "Warn",
-                                "Info",
-                                "Debug",
-                                "Fine",
-                                "Finer",
-                                "Finest"
-                            ],
-                            "type": "string"
-                        },
-                        "Workflow": {
-                            "default": "Info",
-                            "enum": [
-                                "None",
-                                "Error",
-                                "Warn",
-                                "Info",
-                                "Debug",
-                                "Fine",
-                                "Finer",
-                                "Finest"
-                            ],
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "Apex_code"
-                    ],
-                    "type": "object"
-                },
-                "apex-code-runner.preferredWindow": {
-                    "default": "userDebug",
-                    "description": "Output window to display when execution completes. You can view either at any time.",
-                    "enum": [
-                        "userDebug",
-                        "fullLog"
-                    ],
-                    "enumDescriptions": [
-                        "Shows only system.debug statements (and errors)",
-                        "Shows the Full log will show the full log"
-                    ],
-                    "type": "string"
-                }
-            },
-            "title": "Apex Code Runner",
-            "type": "object"
+          },
+          "required": [
+            "Apex_code"
+          ],
+          "type": "object"
         },
-        "keybindings": [],
-        "languages": [
-            {
-                "aliases": [
-                    "Apex"
-                ],
-                "extensions": [
-                    ".apex",
-                    ".soql"
-                ],
-                "id": "apex"
-            }
-        ],
-        "menus": {
-            "commandPalette": [
-                {
-                    "command": "apexrunner.executeAnonymous",
-                    "group": "ApexRunner",
-                    "when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
-                },
-                {
-                    "command": "apexrunner.refreshToken",
-                    "group": "ApexRunner"
-                }
-            ],
-            "editor/context": [
-                {
-                    "command": "apexrunner.executeAnonymous",
-                    "group": "ApexRunner",
-                    "when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
-                },
-                {
-                    "command": "apexrunner.refreshToken",
-                    "group": "ApexRunner",
-                    "when": "APXRActive == false"
-                }
-            ]
+        "apex-code-runner.preferredWindow": {
+          "default": "userDebug",
+          "description": "Output window to display when execution completes. You can view either at any time.",
+          "enum": [
+            "userDebug",
+            "fullLog"
+          ],
+          "enumDescriptions": [
+            "Shows only system.debug statements (and errors)",
+            "Shows the Full log will show the full log"
+          ],
+          "type": "string"
         }
+      },
+      "title": "Salesforce Apex Code Runner",
+      "type": "object"
     },
-    "contributors": [
-        "Joseph Allen (https://github.com/JosephAllen)"
+    "keybindings": [],
+    "languages": [
+      {
+        "aliases": [
+          "Apex"
+        ],
+        "extensions": [
+          ".apex",
+          ".soql"
+        ],
+        "id": "apex"
+      }
     ],
-    "dependencies": {
-        "node-fetch": "^3.1.1",
-        "xml2js": "^0.4.23"
-    },
-    "description": "Execute Apex scripts in a Salesforce project",
-    "devDependencies": {
-        "@types/node": "^13.11.0",
-        "@types/node-fetch": "^2.5.7",
-        "@types/vscode": "^1.44.0",
-        "@types/xml2js": "^0.4.5",
-        "@typescript-eslint/eslint-plugin": "^2.26.0",
-        "@typescript-eslint/parser": "^2.26.0",
-        "eslint": "^6.8.0",
-        "glob-parent": ">=5.1.2",
-        "serialize-javascript": ">=3.1.0",
-        "set-value": ">=4.0.1",
-        "ts-loader": "^7.0.1",
-        "typescript": "^3.8.3",
-        "vscode-test": "^1.3.0",
-        "webpack": "^5.53.0",
-        "webpack-cli": "^3.3.12"
-    },
-    "displayName": "Apex Code Runner",
-    "engines": {
-        "vscode": "^1.44.0"
-    },
-    "extensionDependencies": [
-        "salesforce.salesforcedx-vscode-core"
-    ],
-    "homepage": "https://github.com/JosephAllen/apex-code-runne",
-    "icon": "images/icon.png",
-    "keywords": [
-        "anonymous apex",
-        "apex",
-        "apex-anon",
-        "console.log",
-        "debug",
-        "salesforce dx",
-        "salesforce",
-        "salesforcedx",
-        "sfdx",
-        "soql",
-        "system.debug",
-        "user debug"
-    ],
-    "license": "MIT",
-    "main": "./dist/extension",
-    "name": "apex-code-runner",
-    "publishConfig": {
-        "access": "public"
-    },
-    "publisher": "JosephAllen",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/JosephAllen/apex-code-runner"
-    },
-    "scripts": {
-        "compile": "webpack --mode none",
-        "package": "rimraf ./dist && rimraf ./*.vsix && webpack --mode production && vsce package",
-        "test": "node ./dist/test/runTest.js",
-        "test-compile": "tsc -p ./",
-        "vscode:prepublish": "webpack --mode production",
-        "watch": "webpack --mode none --watch",
-        "webpack": "webpack --mode development",
-        "webpack-dev": "webpack --mode development --watch"
-    },
-    "version": "0.1.3"
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "apexrunner.executeAnonymous",
+          "group": "ApexRunner",
+          "when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+        },
+        {
+          "command": "apexrunner.refreshToken",
+          "group": "ApexRunner"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "apexrunner.executeAnonymous",
+          "group": "ApexRunner",
+          "when": "APXRActive && resourceExtname =~ /(.apex|.soql)/"
+        },
+        {
+          "command": "apexrunner.refreshToken",
+          "group": "ApexRunner",
+          "when": "APXRActive == false"
+        }
+      ]
+    }
+  },
+  "contributors": [
+    "Joseph Allen (https://github.com/JosephAllen)"
+  ],
+  "dependencies": {
+    "node-fetch": "^3.1.1",
+    "xml2js": "^0.4.23"
+  },
+  "description": "Execute Apex scripts in a Salesforce project",
+  "devDependencies": {
+    "@types/node": "^13.11.0",
+    "@types/node-fetch": "^2.5.7",
+    "@types/vscode": "^1.44.0",
+    "@types/xml2js": "^0.4.5",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "glob-parent": ">=5.1.2",
+    "serialize-javascript": ">=3.1.0",
+    "set-value": ">=4.0.1",
+    "ts-loader": "^7.0.1",
+    "typescript": "^3.8.3",
+    "vscode-test": "^1.3.0",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "displayName": "Apex Code Runner",
+  "engines": {
+    "vscode": "^1.44.0"
+  },
+  "extensionDependencies": [
+    "salesforce.salesforcedx-vscode-core"
+  ],
+  "homepage": "https://github.com/JosephAllen/apex-code-runne",
+  "icon": "images/icon.png",
+  "keywords": [
+    "anonymous apex",
+    "apex",
+    "apex-anon",
+    "console.log",
+    "debug",
+    "salesforce dx",
+    "salesforce",
+    "salesforcedx",
+    "sfdx",
+    "soql",
+    "system.debug",
+    "user debug"
+  ],
+  "license": "MIT",
+  "main": "./dist/extension",
+  "name": "apex-code-runner",
+  "publishConfig": {
+    "access": "public"
+  },
+  "publisher": "JosephAllen",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JosephAllen/apex-code-runner"
+  },
+  "scripts": {
+    "compile": "webpack --mode none",
+    "package": "rimraf ./dist && rimraf ./*.vsix && webpack --mode production && vsce package",
+    "test": "node ./dist/test/runTest.js",
+    "test-compile": "tsc -p ./",
+    "vscode:prepublish": "webpack --mode production",
+    "watch": "webpack --mode none --watch",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch"
+  },
+  "version": "0.1.4"
 }
