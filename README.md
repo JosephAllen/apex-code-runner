@@ -1,12 +1,13 @@
 # Apex Code Runner
 
-Apex Code Runner is a simple, fast and graceful tool for running `.apex` scripts within VS Code. This extension executes `.apex` scripts and returns results significantly faster than the Salesforce Extensions Pack.
+Apex Code Runner is a simple, fast and graceful tool for running `.apex` scripts within VS Code. This extension executes `.apex` scripts and returns cleaner results than the Salesforce Extensions Pack.
 
 > __NOTES:__
 >
 > - The [Salesforce CLI Integration](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode-core) extension included in the [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) is required to run Apex Code Runner
-> - Context menus will only work with files that have a `.apex` or `.soql` extension
+> - Context menus will only work with files that have a `.apex` extension
 > - The VS Code workspace MUST be a valid Salesforce project with an authenticated user
+> - _The extension is intended for execution of entire `.apex` file contents, __NOT__ selected lines_
 
 ## Features
 

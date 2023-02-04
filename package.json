@@ -1,7 +1,6 @@
 {
   "activationEvents": [
-    "workspaceContains:sfdx-project.json",
-    "onCommand:apexrunner.executeAnonymous"
+    "workspaceContains:sfdx-project.json"
   ],
   "author": "Joseph Allen",
   "bugs": {

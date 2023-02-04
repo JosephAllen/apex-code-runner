@@ -2,6 +2,16 @@
 
 All notable changes to the "apex-code-runner" extension will be documented in this file.
 
+## 0.1.6
+
+- Adding support for whitespaces in org alias (Alex Faucheux)
+## 0.1.5
+
+- Security Updates
+## 0.1.4
+
+- Security Updates
+
 ## 0.1.3
 
 - Security Updates
