@@ -213,7 +213,8 @@
     }
   },
   "contributors": [
-    "Joseph Allen (https://github.com/JosephAllen)"
+    "Joseph Allen (https://github.com/JosephAllen)",
+    "Alex Faucheux (https://github.com/alexfaucheux)"
   ],
   "dependencies": {
     "node-fetch": "^2.6.1",
@@ -281,5 +282,5 @@
     "webpack": "webpack --mode development",
     "webpack-dev": "webpack --mode development --watch"
   },
-  "version": "0.1.5"
+  "version": "0.1.6"
 }
