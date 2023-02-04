@@ -245,7 +245,7 @@
   "extensionDependencies": [
     "salesforce.salesforcedx-vscode-core"
   ],
-  "homepage": "https://github.com/JosephAllen/apex-code-runne",
+  "homepage": "https://github.com/JosephAllen/apex-code-runner",
   "icon": "images/icon.png",
   "keywords": [
     "anonymous apex",
