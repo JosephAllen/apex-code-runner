@@ -17,7 +17,7 @@ export async function setAuthInfo() {
             version: connection.version
         };
         //Call force:org:display to get a new token
-        const stdout = await require('child_process').execSync('sfdx force:org:display --json -u ' + defUserName).toString();
+        const stdout = require('child_process').execSync(`sfdx force:org:display --json -u \"${defUserName}\"`).toString();
         const displayResult = JSON.parse(stdout);
         authInfo.accessToken = displayResult.result.accessToken;
         //Save the token info to an environment variable for future use
