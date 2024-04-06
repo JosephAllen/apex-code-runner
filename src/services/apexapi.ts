@@ -14,45 +14,49 @@ function source() {
     return '';
 }
 export async function executeAnonymous(): Promise<void> {
-
-    channel.clearLogs();
-    const authInfo = JSON.parse('' + process.env.APXR_AUTH_INFO);
-    const accessToken = authInfo.accessToken;
-    const instanceUrl = authInfo.instanceUrl;
-    const version = authInfo.version;
-    let env = {
-        'soap:Envelope': {
-            $: {
-                "xmlns:soap": "http://schemas.xmlsoap.org/soap/envelope/",
-                "xmlns": "http://soap.sforce.com/2006/08/apex"
-            },
-            'soap:Header': {
-                DebuggingHeader: {
-                    categories: getCategories()
+    try {
+        channel.clearLogs();
+        const authInfo = JSON.parse('' + process.env.APXR_AUTH_INFO);
+        const accessToken = authInfo.accessToken;
+        const instanceUrl = authInfo.instanceUrl;
+        const version = authInfo.version;
+        let env = {
+            'soap:Envelope': {
+                $: {
+                    "xmlns:soap": "http://schemas.xmlsoap.org/soap/envelope/",
+                    "xmlns": "http://soap.sforce.com/2006/08/apex"
                 },
-                SessionHeader: {
-                    sessionId: accessToken
-                }
-            },
-            'soap:Body': {
-                executeAnonymous: {
-                    String: source()
+                'soap:Header': {
+                    DebuggingHeader: {
+                        categories: getCategories()
+                    },
+                    SessionHeader: {
+                        sessionId: accessToken
+                    }
+                },
+                'soap:Body': {
+                    executeAnonymous: {
+                        String: source()
+                    }
                 }
             }
-        }
-    };
-    let builder = new xml2js.Builder();
-    let requestBody = builder.buildObject(env);
-    await fetch(instanceUrl + '/services/Soap/s/' + version, {
-        method: 'post',
-        body: requestBody,
-        headers: {
-            'Content-Type': 'text/xml;charset=UTF-8',
-            'SOAPAction': '""'
-        },
-    }).then((res) => res.text()).then((response) => {
-        parseXml(response);
-    });
+        };
+        let builder = new xml2js.Builder();
+        let requestBody = builder.buildObject(env);
+        await fetch(instanceUrl + '/services/Soap/s/' + version, {
+            method: 'post',
+            body: requestBody,
+            headers: {
+                'Content-Type': 'text/xml;charset=UTF-8',
+                'SOAPAction': '""'
+            },
+        }).then((res) => res.text()).then((response) => {
+            parseXml(response);
+        });
+    }
+    catch (err) {
+        console.error(err);
+    }
 }
 
 function getCategories() {
@@ -65,31 +69,34 @@ function getCategories() {
 }
 
 function parseXml(xml: string) {
-    const stripNS = xml2js.processors.stripPrefix;
-    const parseOptions = {
-        emptyTag: null,
-        explicitArray: false,
-        ignoreAttrs: true,
-        normalizeTags: false,
-        tagNameProcessors: [stripNS]
-    };
-    xml2js.parseString(xml, parseOptions, function (err, result) {
-        const env = Object.assign({}, result.Envelope);
-        const message = parseEnvelope(env);
-        if (err) {
-            const errMsg = err.toString();
-            channel.writeDebugLog(errMsg);
-            channel.writeUserLog(errMsg);
+    try {
+        const stripNS = xml2js.processors.stripPrefix;
+        const parseOptions = {
+            explicitArray: false,
+            ignoreAttrs: true,
+            tagNameProcessors: [stripNS]
+        };
+        xml2js.parseString(xml, parseOptions, function (err, result) {
+            const env = Object.assign({}, result.Envelope);
+            const message = parseEnvelope(env);
+            if (err) {
+                const errMsg = err.toString();
+                channel.writeDebugLog(errMsg);
+                channel.writeUserLog(errMsg);
+                channel.showLog();
+                return;
+            }
+            channel.writeUserLog(message);
+            if (env.Header !== undefined) {
+                channel.writeDebugLog('DEBUG LOG\n' + env.Header.DebuggingInfo.debugLog);
+            }
+            else {
+                channel.writeDebugLog(message);
+            }
             channel.showLog();
-            return;
-        }
-        channel.writeUserLog(message);
-        if (env.Header !== undefined) {
-            channel.writeDebugLog('DEBUG LOG\n' + env.Header.DebuggingInfo.debugLog);
-        }
-        else {
-            channel.writeDebugLog(message);
-        }
-        channel.showLog();
-    });
+        });
+    }
+    catch (err) {
+        console.error(err);
+    }
 }

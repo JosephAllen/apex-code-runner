@@ -3,23 +3,23 @@ import * as vscode from 'vscode';
 import { workspace } from 'vscode';
 import * as path from 'path';
 const sbiRefresh = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 0);
-const sfdxCoreExports = vscode.extensions.getExtension('salesforce.salesforcedx-vscode-core')!.exports;
-//const { exec } = require('child_process');
 export async function setAuthInfo() {
     try {
-        const orgAuthInfo = await sfdxCoreExports.OrgAuthInfo;
-        const defUserName = await orgAuthInfo.getDefaultUsernameOrAlias(false);
-        const userName = await orgAuthInfo.getUsername(defUserName);
-        const connection = await orgAuthInfo.getConnection(userName);
-        let authInfo = {
-            accessToken: connection.accessToken,
-            instanceUrl: connection.instanceUrl,
-            version: connection.version
-        };
-        //Call force:org:display to get a new token
-        const stdout = require('child_process').execSync(`sfdx force:org:display --json -u \"${defUserName}\"`).toString();
+
+        //config get target-org to get the default alias
+        const config = require('child_process').execSync(`sf config get target-org --json`).toString();
+        const configResult = JSON.parse(config);
+        const defUserName = configResult.result[0].value;
+
+        //Call org display to get a new token
+        const stdout = require('child_process').execSync(`sf org display --json --target-org \"${defUserName}\"`).toString();
         const displayResult = JSON.parse(stdout);
-        authInfo.accessToken = displayResult.result.accessToken;
+        let authInfo = {
+            accessToken: displayResult.result.accessToken,
+            instanceUrl: displayResult.result.instanceUrl,
+            version: displayResult.result.apiVersion
+        };
+
         //Save the token info to an environment variable for future use
         process.env.APXR_AUTH_INFO = JSON.stringify(authInfo);
         vscode.commands.executeCommand('setContext', 'APXRActive', true);

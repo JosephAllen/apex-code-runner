@@ -3,8 +3,10 @@ import * as vscode from 'vscode';
 import { showTokenRefresh } from '../services';
 export function parseEnvelope(envelope: any) {
     let userDebug = '';
-    if (envelope.Body.hasOwnProperty('Fault')) {
-        userDebug = 'FATAL_ERROR\n' + envelope.Body.Fault.faultstring;
+    const body = Object.assign({}, envelope.Body);
+
+    if (body.hasOwnProperty('Fault')) {
+        userDebug = 'FATAL_ERROR\n' + body.Fault.faultstring;
         if (userDebug.includes('INVALID_SESSION_ID')) {
             vscode.commands.executeCommand('setContext', 'APXRActive', false);
             showTokenRefresh();
@@ -12,7 +14,7 @@ export function parseEnvelope(envelope: any) {
         }
         return userDebug;
     }
-    const result = envelope.Body.executeAnonymousResponse.result;
+    const result = body.executeAnonymousResponse.result;
     if (result.compiled === 'true' && result.success === 'true') {
         userDebug = parseDebug(envelope.Header.DebuggingInfo.debugLog);
     }
@@ -29,6 +31,7 @@ export function parseEnvelope(envelope: any) {
     }
 
     return userDebug;
+
 }
 export function parseDebug(debugLog: string) {
     let userDebug = '';
@@ -45,4 +48,5 @@ export function parseDebug(debugLog: string) {
         userDebug = 'Anonymous execution was successful.';
     }
     return userDebug;
+
 }
