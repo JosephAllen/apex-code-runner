@@ -2,6 +2,10 @@
 
 All notable changes to the "apex-code-runner" extension will be documented in this file.
 
+## 0.1.8
+
+- Fix `INVALID_SESSION_ID: Illegal Session` error caused by recent Salesforce CLI versions masking secrets in `sf org display`. The access token is now retrieved via `sf org auth show-access-token`.
+
 ## 0.1.7
 
 - Updates to support sf CLI syntax
