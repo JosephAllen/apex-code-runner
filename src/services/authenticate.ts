@@ -11,11 +11,18 @@ export async function setAuthInfo() {
         const configResult = JSON.parse(config);
         const defUserName = configResult.result[0].value;
 
-        //Call org display to get a new token
+        //Call org display for the non-secret connection info (instance url, api version)
         const stdout = require('child_process').execSync(`sf org display --json --target-org \"${defUserName}\"`).toString();
         const displayResult = JSON.parse(stdout);
+
+        //Fetch the access token via the dedicated command.
+        //Recent Salesforce CLI versions mask secrets in `sf org display` output,
+        //so its accessToken is now a placeholder message rather than a real session id.
+        const tokenStdout = require('child_process').execSync(`sf org auth show-access-token --json --target-org \"${defUserName}\"`).toString();
+        const tokenResult = JSON.parse(tokenStdout);
+
         let authInfo = {
-            accessToken: displayResult.result.accessToken,
+            accessToken: tokenResult.result.accessToken,
             instanceUrl: displayResult.result.instanceUrl,
             version: displayResult.result.apiVersion
         };
