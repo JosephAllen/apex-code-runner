@@ -18,7 +18,7 @@ export async function setAuthInfo() {
         //Fetch the access token via the dedicated command.
         //Recent Salesforce CLI versions mask secrets in `sf org display` output,
         //so its accessToken is now a placeholder message rather than a real session id.
-        const tokenStdout = require('child_process').execSync(`sf org auth show-access-token --json --target-org \"${defUserName}\"`).toString();
+        const tokenStdout = require('child_process').execSync(`sf org auth show-access-token --json --no-prompt --target-org \"${defUserName}\"`).toString();
         const tokenResult = JSON.parse(tokenStdout);
 
         let authInfo = {
